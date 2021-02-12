@@ -1,19 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
-import Paragraph from '../../atoms/Paragraph/Paragraph';
-import Heading from '../../atoms/Heading/Heading';
-import Button from '../../atoms/Button/Button';
+import { storiesOf } from '@storybook/react';
+import Card from './Card';
 
-const StyledWrapper = styled.div`
- padding: 30px 17px;
-`;
-
-const Card = () => (
-  <StyledWrapper>
-    <Heading>Hello Krystian!</Heading>
-    <Paragraph>kjfsdsjfhsdkhnflksndlfnlsdnlfnsdlnf sd fknsdlklnfks nlfnsd l</Paragraph>
-    <Button secondary>REMOVE</Button>
-  </StyledWrapper>
-);
-
-export default Card;
+storiesOf('Molecules/Card',module)
+  .add('Notes',()=> <Card/>)
+  .add('Twitters',()=> <Card cardType='twitters'/>)
+  .add('Articles',()=> <Card cardType='articles'/>);
