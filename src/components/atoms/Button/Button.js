@@ -1,6 +1,7 @@
 import styled, { css }from 'styled-components';
 
 const Button = styled.button`
+  display: block;
   padding: 0;
   background-color: ${({theme}) => theme.notes};
   width: 220px;
