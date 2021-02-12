@@ -3,6 +3,7 @@ import {ThemeProvider} from 'styled-components';
 import Button from '../../components/atoms/Button/Button';
 import {theme} from '../../theme/mainTheme';
 import GlobalStyle from '../../theme/GlobalStyle';
+import Input from '../../components/atoms/Input/Input';
 
 
 const Root = () => (
@@ -13,6 +14,8 @@ const Root = () => (
     <h1>Hello Krystian</h1>
     <Button>CLOSE / SAVE</Button>
     <Button secondary>Remove</Button>
+        <Input/>
+        <Input search/>
       </>
     </ThemeProvider>
   </div>

@@ -1,19 +1,31 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import magnifierIcon from '../../../assets/icons/magnifier.svg';
 
 const Input = styled.input`
   padding: 15px 30px;
-  font-size: ${({theme})=> theme.fontSize.s};
-  font-weight: ${({theme})=> theme.regular};
-  background-color: ${({theme})=> theme.grey100};
+  font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: ${({ theme }) => theme.regular};
+  background-color: ${({ theme }) => theme.grey100};
   border: none;
   border-radius: 50px;
-  
-  ::placeholder{
+
+  ::placeholder {
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: ${({theme})=> theme.grey300};
+    color: ${({ theme }) => theme.grey300};
   }
-  
-  `;
+
+  ${({ search }) =>
+          search && css`
+            padding: 10px 20px 10px 40px;
+            background-image: url(${() => magnifierIcon});
+            background-size: 15px;
+            background-position: 10px 50%;
+            background-repeat: no-repeat;
+            font-size: ${({ theme }) => theme.fontSize.xs};
+          `
+  }
+
+`;
 
 export default Input;
