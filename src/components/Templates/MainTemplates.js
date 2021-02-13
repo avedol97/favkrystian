@@ -4,12 +4,13 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from '../../theme/mainTheme';
 import GlobalStyle from '../../theme/GlobalStyle';
 
-
 const MainTemplates = ({children}) => (
-  <>
+  <div>
     <GlobalStyle />
-    <ThemeProvider theme={theme}>{children}</ThemeProvider>
-  </>
+    <ThemeProvider theme={theme}>
+      {children}
+    </ThemeProvider>
+  </div>
 );
 
 MainTemplates.prototype = {

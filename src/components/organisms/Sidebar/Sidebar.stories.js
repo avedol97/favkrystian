@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
-import Sidebar from './Siedebar';
+import Sidebar from './Sidebar';
 
 storiesOf('Oranisms/Sidebar',module)
   .addDecorator(StoryRouter())
