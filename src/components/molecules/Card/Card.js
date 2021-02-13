@@ -5,6 +5,8 @@ import Paragraph from '../../atoms/Paragraph/Paragraph';
 import Heading from '../../atoms/Heading/Heading';
 import Button from '../../atoms/Button/Button';
 import LinkIcon from  '../../../assets/icons/link.svg';
+
+
 const StyledWrapper = styled.div`
   min-height: 380px;
   box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
@@ -67,16 +69,16 @@ const StyledLinkButton = styled.a`
   right:25px;
   transform: translateY(-50%); 
 `;
-const Card = ({ cardType }) => (
+const Card = ({ cardType,title,created,twitterName,articleUrl,content }) => (
   <StyledWrapper>
     <InnerWrapper activeColor={cardType}>
-      <StyledHeading>Hello Krystian!</StyledHeading>
-      <DateInfo>3 days</DateInfo>
-      {cardType === 'twitters' && <StyledAvatar src='https://panwybierak.pl/blog/wp-content/uploads/2020/05/avatarmaker5.png' />}
-      {cardType === 'articles' && <StyledLinkButton href="https://www.siepomaga.pl/"/>}
+      <StyledHeading>{title}</StyledHeading>
+      <DateInfo>{created}</DateInfo>
+      {cardType === 'twitters' && <StyledAvatar src={twitterName} />}
+      {cardType === 'articles' && <StyledLinkButton href={articleUrl}/>}
     </InnerWrapper>
     <InnerWrapper flex>
-      <Paragraph>kjfsdsjfhsdkhnflksndlfnlsdnlfnsdlnf sd fknsdlklnfks nlfnsd l</Paragraph>
+      <Paragraph>{content}</Paragraph>
       <Button secondary>REMOVE</Button>
     </InnerWrapper>
   </StyledWrapper>
@@ -85,10 +87,17 @@ const Card = ({ cardType }) => (
 
 Card.prototype = {
   cardType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  title:PropTypes.string.isRequired,
+  created:PropTypes.string.isRequired,
+  twitterName:PropTypes.string,
+  articleUrl:PropTypes.string,
+  content:PropTypes.string.isRequired,
 };
 
 Card.defaultProps = {
   cardType: 'notes',
+  twitterName: null,
+  articleUrl:null,
 };
 
 export default Card;
