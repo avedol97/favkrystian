@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from '../../theme/mainTheme';
 import GlobalStyle from '../../theme/GlobalStyle';
 
-const MainTemplates = ({children}) => (
+const MainTemplate = ({children}) => (
   <div>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
@@ -13,7 +13,7 @@ const MainTemplates = ({children}) => (
   </div>
 );
 
-MainTemplates.prototype = {
+MainTemplate.prototype = {
   children: PropTypes.element.isRequired,
 }
-export default MainTemplates ;
+export default MainTemplate ;
