@@ -49,7 +49,7 @@ const DetailTemplate = ({ children, pageType }) => (
 );
 
 UserPageTemplate.propTypes = {
-  // children: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.arrayOf(PropTypes.object).isRequired,
   pageType: PropTypes.oneOf(['notes','twitters','articles']),
 };
 
