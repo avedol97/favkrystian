@@ -1,36 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import Card from '../components/molecules/Card/Card';
 import GridTemplate from '../components/Templates/GridTemplate';
 
+const mapStateToProps = ({notes}) => ({notes});
 
-const notes = [
-  {
-    id:1,
-    title: "Krystian1",
-    content: " Tak tak tak",
-    created:'1 day',
-  },
-  {
-    id:2,
-    title: "Krystian2",
-    content: " Tak tak tak",
-    created:'1 day',
-  },
-  {
-    id:3,
-    title: "Krystian3",
-    content: " Tak tak tak",
-    created:'1 day',
-  },
-  {
-    id:4,
-    title: "Krystian4",
-    content: " Tak tak tak",
-    created:'1 day',
-  },
-]
 
-const Notes = () =>(
+const Notes = ({notes}) =>(
   <GridTemplate pageType="notes">
     {notes.map(({title,content,created,id}) =>(
       <Card
@@ -45,4 +21,4 @@ const Notes = () =>(
   </GridTemplate>
 );
 
-export default Notes;
+export default connect(mapStateToProps)(Notes);

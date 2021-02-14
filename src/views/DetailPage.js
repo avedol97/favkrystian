@@ -3,7 +3,7 @@ import DetailsTemplate from '../components/Templates/DetailsTemplate';
 import { routes } from '../routes';
 
 
-class DetaislPage extends Component {
+class DetailPage extends Component {
   constructor(props) {
     super(props);
 
@@ -51,4 +51,4 @@ class DetaislPage extends Component {
 }
 
 
-export default DetaislPage;
+export default DetailPage;
