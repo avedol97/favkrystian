@@ -34,6 +34,7 @@ const Notes = () =>(
   <GridTemplate pageType="notes">
     {notes.map(({title,content,created,id}) =>(
       <Card
+        id={id}
         cardType="notes"
         title={title}
         content={content}

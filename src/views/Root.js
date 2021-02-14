@@ -12,7 +12,7 @@ const Root = () => (
   <BrowserRouter>
     <MainTemplate>
     <Switch>
-      <Route exact path={routes.home} render={() => <Redirect to={routes.notes} />}/>
+      <Route exact path={routes.home} render={() => <Redirect to="notes" />}/>
       <Route exact path={routes.notes} component={Notes}/>
       <Route path={routes.note}  component={DetailPage}/>
       <Route exact path={routes.articles}  component={Articles}/>

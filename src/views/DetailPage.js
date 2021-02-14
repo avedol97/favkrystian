@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import DetailsTemplate from '../components/Templates/DetailsTemplate';
-import {routes} from '../routes';
+import { routes } from '../routes';
 
-const DetailPage = ({match}) => (
-   <DetailsTemplate>
-     <p>{`is twitter: ${match.path === routes.twitter}`}</p>
-     <p>{`is note: ${match.path === routes.note}`}</p>
-     <p>{`is article: ${match.path === routes.article}`}</p>
-   </DetailsTemplate>
+class DetailPage extends Component {
+constructor(props) {
+  super(props);
 
+  this.state = {
+    pageType:'notes',
+  }
+}
 
-);
+componentDidMount() {
+  switch(this.props.match.path){
+    case routes.twitter:
+      this.setState({pageType: 'twitters'})
+      break;
+    case routes.note:
+      this.setState({pageType: 'notes'})
+      break;
+    case routes.article:
+      this.setState({pageType: 'articles'})
+      break;
+    default:
+      this.setState({pageType: 'notes'})
+  }
+}
+
+  render() {
+    // const {match} = this.props;
+    return (
+      <DetailsTemplate pageType={this.state.pageType}>
+        <p>{this.state.pageType}</p>
+      </DetailsTemplate>
+    );
+  }
+}
 
 export default DetailPage;
