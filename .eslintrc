@@ -12,6 +12,8 @@
         "document": true
     },
     "rules": {
+        "react/no-unused-state": 0,
+        "react/destructuring-assignment": 0,
         "react/prop-types": 0,
         "import/no-unresolved": 0,
         "import/no-extraneous-dependencies": [

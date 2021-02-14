@@ -75,7 +75,7 @@ class Card extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+      this.state = {
       redirect:false,
     };
   }
@@ -86,7 +86,7 @@ class Card extends Component {
   render() {
     const { id, cardType, title, created, twitterName, articleUrl, content } = this.props;
 
-    if (this.state.redirect) {
+    if (this.state.redirect ) {
       return <Redirect to={`${cardType}/${id}`} />
     }
       return (
