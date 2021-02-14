@@ -1,9 +1,13 @@
-import styled, { css }from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Button = styled.button`
-  display: block;
+  display: flex;
   padding: 0;
-  background-color: ${({theme}) => theme.notes};
+  color: black;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: ${({ activecolor, theme }) => theme[activecolor]};
   width: 220px;
   height: 47px;
   border: none;
@@ -12,8 +16,8 @@ const Button = styled.button`
   font-weight: 600;
   font-size: 16px;
   text-transform: uppercase;
-  
-  ${({secondary}) =>
+
+  ${({ secondary }) =>
   secondary && css`
   background-color: ${({theme})=> theme.grey200};
   width: 105px;

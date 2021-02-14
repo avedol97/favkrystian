@@ -33,7 +33,7 @@ const StyledParagraph =styled(Paragraph)`
   font-weight: ${({theme})=> theme.bold};
 `;
 
-const DetailTemplate = ({ children, pageType }) => (
+const GridTemplate = ({ children, pageType }) => (
   <UserPageTemplate pageType={pageType}>
     <StyledWrapper>
       <StyledPageHeader>
@@ -57,4 +57,4 @@ UserPageTemplate.defaultProps = {
   pageType:'notes',
 };
 
-export default DetailTemplate;
+export default GridTemplate;
