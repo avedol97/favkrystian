@@ -8,20 +8,20 @@ class DetailPage extends Component {
     super(props);
 
     this.state = {
-      pageType: 'notes',
+      pageContext: 'notes',
     };
   }
 
   componentDidMount() {
     switch (this.props.match.path) {
     case routes.twitter:
-      this.setState({pageType: 'twitters'})
+      this.setState({pageContext: 'twitters'})
       break;
     case routes.note:
-      this.setState({pageType: 'notes' })
+      this.setState({pageContext: 'notes' })
       break;
     case routes.article:
-      this.setState({pageType: 'articles'})
+      this.setState({pageContext: 'articles'})
       break;
     default:
       console.log('Something went wrong!');
@@ -39,7 +39,7 @@ class DetailPage extends Component {
     };
 
     return (
-      <DetailsTemplate pageType={this.state.pageType}
+      <DetailsTemplate pageContext={this.state.pageContext}
                        title={dummyArticle.title}
                        created={dummyArticle.created}
                        content={dummyArticle.content}

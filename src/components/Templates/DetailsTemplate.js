@@ -6,6 +6,7 @@ import UserPageTemplate from './UserPageTemplate';
 import Paragraph from '../atoms/Paragraph/Paragraph';
 import Heading from '../atoms/Heading/Heading';
 import Button from '../atoms/Button/Button';
+import withContext from '../../hoc/withContext';
 
 const StyledWrapper = styled.div`
   padding: 25px 150px 25px 70px;
@@ -47,8 +48,8 @@ const StyledImage = styled.img`
   border-radius: 50%;
 `;
 
-const DetailsTemplate = ({ pageType, title, content, articleUrl, twitterName }) => (
-  <UserPageTemplate pageType={pageType}>
+const DetailsTemplate = ({ pageContext, title, content, articleUrl, twitterName }) => (
+  <UserPageTemplate >
     <StyledWrapper>
       <StyledPageHeader>
         <StyledHeading>
@@ -56,12 +57,12 @@ const DetailsTemplate = ({ pageType, title, content, articleUrl, twitterName }) 
         </StyledHeading>
       </StyledPageHeader>
       <Paragraph>{content}</Paragraph>
-      {pageType === 'articles' && <StyledLink href={articleUrl} target='_blank'>Open article</StyledLink>}
-      {pageType === 'twitters' &&
+      {pageContext === 'articles' && <StyledLink href={articleUrl} target='_blank'>Open article</StyledLink>}
+      {pageContext === 'twitters' &&
       <StyledImage alt={twitterName} src='https://panwybierak.pl/blog/wp-content/uploads/2020/05/avatarmaker5.png' />}
 
 
-      <Button as={Link} to={`${pageType}`} activecolor={pageType}>
+      <Button as={Link} to={`${pageContext}`} activecolor={pageContext}>
         save / close
       </Button>
     </StyledWrapper>
@@ -69,7 +70,7 @@ const DetailsTemplate = ({ pageType, title, content, articleUrl, twitterName }) 
 );
 
 DetailsTemplate.propTypes = {
-  pageType: PropTypes.oneOf(['notes', 'articles', 'twitters']).isRequired,
+  pageContext: PropTypes.oneOf(['notes', 'articles', 'twitters']).isRequired,
   title: PropTypes.string,
   content: PropTypes.string,
   articleUrl: PropTypes.string,
@@ -83,4 +84,4 @@ DetailsTemplate.defaultProps = {
   twitterName: '',
 };
 
-export default DetailsTemplate;
+export default withContext(DetailsTemplate);
