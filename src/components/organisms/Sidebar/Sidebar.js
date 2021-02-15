@@ -8,6 +8,7 @@ import logoutIcon from '../../../assets/icons/logout.svg';
 import bulbIcon from '../../../assets/icons/bulb.svg';
 import twitterIcon from '../../../assets/icons/twitter.svg';
 import logoIcon from '../../../assets/icons/logo.svg';
+import withContext from '../../../hoc/withContext';
 
 const SidebarWrapper = styled.nav`
   left: 0;
@@ -71,4 +72,4 @@ Sidebar.defaultProps = {
   pageContext: 'notes',
 };
 
-export default Sidebar;
+export default withContext(Sidebar);
