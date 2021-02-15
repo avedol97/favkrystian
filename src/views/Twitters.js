@@ -7,11 +7,10 @@ import GridTemplate from '../components/Templates/GridTemplate';
 const mapStateToProps = ({ twitters }) => ({ twitters });
 
 const Twitters = ({ twitters }) => (
-  <GridTemplate pageType='twitters'>
+  <GridTemplate>
     {twitters.map(({ id, title, content, twitterName, created }) => (
       <Card
         id={id}
-        cardType='twitters'
         title={title}
         content={content}
         twitterName={twitterName}
