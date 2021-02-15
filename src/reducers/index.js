@@ -1,7 +1,7 @@
 const initialState = {
   notes: [
     {
-      id: 1,
+      id: '1fd',
       title: 'Pierwsza',
       content: ' Jest tak :)',
       created: '14 day',
@@ -10,7 +10,7 @@ const initialState = {
   twitters: [
     {
       id: 1,
-      title: 'Krystian1',
+      title: 'Ananasek Fluffy;)',
       content: ' Tak tak tak',
       twitterName: 'https://panwybierak.pl/blog/wp-content/uploads/2020/05/avatarmaker5.png',
       created: '1 day',
@@ -50,6 +50,14 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'ADD_ITEM':
+      return {
+        ...state,
+        [action.payload.itemType]: [
+          ...state
+            [action.payload.itemType],
+          action.payload.item],
+      };
     case('REMOVE_ITEM'):
       return {
         ...state,
