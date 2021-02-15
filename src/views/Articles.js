@@ -5,11 +5,10 @@ import Card from '../components/molecules/Card/Card';
 import GridTemplate from '../components/Templates/GridTemplate';
 
 const Articles = ({ articles }) => (
-  <GridTemplate pageType='articles'>
+  <GridTemplate>
     {articles.map(({ title, content, articleUrl, created, id }) => (
       <Card
         id={id}
-        cardType='articles'
         title={title}
         content={content}
         articleUrl={articleUrl}
@@ -27,7 +26,7 @@ Articles.propTypes = {
       title: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
       created: PropTypes.string.isRequired,
-      article: PropTypes.string.isRequired,
+      articleUrl: PropTypes.string.isRequired,
     }),
   ),
 };
@@ -35,14 +34,14 @@ Articles.propTypes = {
 Articles.defaultProps = {
   articles: [],
 };
-
-const mapStateToProps = state => {
-  const { articles } = state;
-  return { articles };
-};
-
 // alternative form
-// const mapStateToProps = ({ articles }) => ({ articles });
+// const mapStateToProps = state => {
+//   const { articles } = state;
+//   return { articles };
+// };
+
+
+const mapStateToProps = ({ articles }) => ({ articles });
 
 
 export default connect(mapStateToProps)(Articles);
