@@ -13,8 +13,10 @@
         "document": true
     },
     "rules": {
+        "no-unused-vars": "off",
+        "arrow-body-style": "off",
         "react/require-default-props": 0,
-        "react/no-unused-state": 0,
+        "react/no-unused-state": "off",
         "react/destructuring-assignment": 0,
         "react/prop-types": 0,
         "import/no-unresolved": 0,
