@@ -35,7 +35,7 @@ class GridTemplate extends Component {
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
           <StyledButtonIcon onClick={this.handleNewItemBar} icon={plusIcon} activeColor={pageContext} />
-          <NewItemBar isVisible={isNewItemBarVisible}/>
+          <NewItemBar handleClose={this.handleNewItemBar}  isVisible={isNewItemBarVisible}/>
         </StyledWrapper>
       </UserPageTemplate>
     )
