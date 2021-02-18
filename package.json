@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
     "assets": "^3.0.1",
+    "axios": "^0.21.1",
     "eslint": "^7.11.0",
     "formik": "^2.2.6",
     "pr": "^0.3.2",

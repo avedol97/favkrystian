@@ -43,7 +43,7 @@ const StyledForm = styled(Form)`
   flex-direction: column;
 `;
 
-const NewItemBar = ({ pageContext, isVisible, addItem }) => (
+const NewItemBar = ({ pageContext, isVisible, addItem,handleClose }) => (
   <StyledWrapper isVisible={isVisible} activecolor={pageContext}>
     <Heading big>Create new {pageContext}</Heading>
     <Formik initialValues={{ title: '', content: '', articleUrl: '', twitterName: '', created: '' }}
@@ -51,6 +51,7 @@ const NewItemBar = ({ pageContext, isVisible, addItem }) => (
               console.log(values);
               console.log(pageContext)
               addItem(pageContext,values);
+              handleClose();
             }}
     >
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
