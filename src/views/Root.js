@@ -9,6 +9,7 @@ import MainTemplate from '../components/Templates/MainTemplate';
 import DetailPage from './DetailPage';
 import {routes} from '../routes';
 import LoginPage from './LoginPage';
+import RegisterPage from './RegisterPage';
 
 const Root = () => (
 <Provider store={store}>
@@ -16,7 +17,8 @@ const Root = () => (
     <MainTemplate>
     <Switch>
       <Route exact path={routes.login} component={LoginPage}/>
-      <Route exact path={routes.home} render={() => <Redirect to="notes" />}/>
+      <Route exact path={routes.register} component={RegisterPage} />
+      <Route exact path={routes.home} render={() => <Redirect to="/notes" />}/>
       <Route exact path={routes.notes} component={Notes}/>
       <Route path={routes.note}  component={DetailPage}/>
       <Route exact path={routes.articles}  component={Articles}/>

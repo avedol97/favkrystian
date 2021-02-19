@@ -26,7 +26,6 @@ class MainTemplate extends Component {
   setCurrentPage = (prevState='') => {
     const pageTypes = ['twitters', 'articles', 'notes'];
     const { location: { pathname } } = this.props;
-    console.log(pathname);
     const [currentPage] = pageTypes.filter(page => pathname.includes(page));
 
     if (prevState.pageType !== currentPage) {
@@ -37,12 +36,13 @@ class MainTemplate extends Component {
 
   render() {
     const { children } = this.props;
-    const {pageType} =this.state;
+    const { pageType } = this.state;
+
     return (
       <div>
-        <PageContext.Provider value={pageType} >
-        <GlobalStyle />
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <PageContext.Provider value={pageType}>
+          <GlobalStyle />
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
         </PageContext.Provider>
       </div>
     );
@@ -52,5 +52,9 @@ class MainTemplate extends Component {
 
 MainTemplate.propType = {
   children: PropTypes.element.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
+
 export default withRouter(MainTemplate);
