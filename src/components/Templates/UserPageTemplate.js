@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Sidebar from '../organisms/Sidebar/Sidebar';
-import withContext from '../../hoc/withContext';
 
-const UserPageTemplate = ({ children, pageContext }) => (
-  <>
-    <Sidebar/>
+const StyledWrapper = styled.div`
+  padding-left: 150px;
+`;
+
+const UserPageTemplate = ({ children }) => (
+  <StyledWrapper>
+    <Sidebar />
     {children}
-  </>
+  </StyledWrapper>
 );
 
 UserPageTemplate.propTypes = {
@@ -15,4 +19,4 @@ UserPageTemplate.propTypes = {
 };
 
 
-export default withContext(UserPageTemplate);
+export default UserPageTemplate;
