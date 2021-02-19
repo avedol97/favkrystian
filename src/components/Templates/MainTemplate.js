@@ -30,7 +30,6 @@ class MainTemplate extends Component {
 
     if (prevState.pageType !== currentPage) {
       this.setState({ pageType: currentPage });
-      console.log(this.state);
     }
   };
 
