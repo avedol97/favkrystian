@@ -1,58 +1,17 @@
-import  {ADD_ITEM,REMOVE_ITEM,AUTH_REQUEST,AUTH_SUCCESS,AUTH_FAILURE} from '../actions'
+import  {ADD_ITEM,REMOVE_ITEM,AUTH_REQUEST,AUTH_SUCCESS,AUTH_FAILURE,FETCH_REQUEST,FETCH_SUCCESS,FETCH_FAILURE} from '../actions'
 
 
-const initialState = {
-  notes: [
-    {
-      id: '1fd',
-      title: 'Pierwsza',
-      content: ' Jest tak :)',
-      created: '14 day',
-    },
-  ],
-  twitters: [
-    {
-      id: 1,
-      title: 'Ananasek Fluffy;)',
-      content: ' Tak tak tak',
-      twitterName: 'https://panwybierak.pl/blog/wp-content/uploads/2020/05/avatarmaker5.png',
-      created: '1 day',
-    },
-    {
-      id: 2,
-      title: 'Krystian2',
-      content: ' Tak tak tak',
-      twitterName: 'https://panwybierak.pl/blog/wp-content/uploads/2020/05/avatarmaker5.png',
-      created: '1 day',
-    },
-    {
-      id: 3,
-      title: 'Krystian3',
-      content: ' Tak tak tak',
-      twitterName: 'https://panwybierak.pl/blog/wp-content/uploads/2020/05/avatarmaker5.png',
-      created: '1 day',
-    },
-    {
-      id:4,
-      title: 'Jupi ja jej!',
-      content: ' Tak tak tak',
-      twitterName: 'https://panwybierak.pl/blog/wp-content/uploads/2020/05/avatarmaker5.png',
-      created: '1 day',
-    },
-  ],
-  articles: [
-    {
-      id: 1,
-      title: 'Wiktoriaaa!',
-      content: 'Blizna nad nami',
-      articleUrl: 'https://www.siepomaga.pl/',
-      created: '2 day',
-    },
-  ],
-};
+const initialState = {};
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FETCH_SUCCESS:
+      return {
+        ...state,
+       [action.payload.itemType]:
+         [...action.payload.data],
+
+      }
     case AUTH_SUCCESS:
       return {
         ...state,
