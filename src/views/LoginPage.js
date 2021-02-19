@@ -1,13 +1,16 @@
 import React from 'react';
-import {Form,Formik,Field} from 'formik';
+import { Form, Formik } from 'formik';
 import styled from 'styled-components';
-import {Link,Redirect} from 'react-router-dom'
+import { Link,Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import AuthTemplate from '../components/Templates/AuthTemplate';
 import Input from '../components/atoms/Input/Input';
 import Heading from '../components/atoms/Heading/Heading';
 import Button from '../components/atoms/Button/Button';
 import { routes } from '../routes';
 
+
+import { authenticate as authenticateAction } from '../actions';
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -33,21 +36,27 @@ const StyledLink = styled(Link)`
 
 `;
 
-const LoginPage = () => (
+const LoginPage = ({authenticate, userID}) => (
   <AuthTemplate>
-  <Formik
-  initialValues={{username:'',password:''}}
-  onSubmit={() => console.log('kdfsdf')}>
-    {({handleChange,handleBlur,values }) => {
-      return (
-        <>
-          <Heading>Sign in</Heading>
-          <StyledForm>
-            <StyledInput
-              name="username"
-              type="text"
-              placeholder="Login"
-              onChange={handleChange}
+    <Formik
+      initialValues={{ username: '', password: '' }}
+      onSubmit={({ username, password }) => {
+        authenticate(username, password);
+      }}
+    >
+      {({ handleChange, handleBlur, values }) => {
+       if(userID) {
+         return <Redirect to={routes.home}/>;
+       }
+        return (
+          <>
+            <Heading>Sign in</Heading>
+            <StyledForm>
+              <StyledInput
+                name='username'
+                type='text'
+                placeholder='Login'
+                onChange={handleChange}
               onBlur={handleBlur}
               value={values.title}
             />
@@ -60,14 +69,25 @@ const LoginPage = () => (
               value={values.title}
             />
             <Button activecolor="notes" type="submit">sign in</Button>
-          </StyledForm>
-          <StyledLink to={routes.register}>I want my account!</StyledLink>
-        </>
-      );
-    }}
-  </Formik>
+            </StyledForm>
+            <StyledLink to={routes.register}>I want my account!</StyledLink>
+          </>
+        );
+      }}
+    </Formik>
   </AuthTemplate>
 
 );
 
-export default LoginPage;
+const mapStateToProps = ({ userID = null }) => ({
+  userID,
+});
+
+const mapDispatchToProps = dispatch => ({
+  authenticate: (username, password) => dispatch(authenticateAction(username, password)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(LoginPage);
