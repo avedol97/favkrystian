@@ -46,7 +46,7 @@ const StyledForm = styled(Form)`
 const NewItemBar = ({ pageContext, isVisible, addItem,handleClose }) => (
   <StyledWrapper isVisible={isVisible} activecolor={pageContext}>
     <Heading big>Create new {pageContext}</Heading>
-    <Formik initialValues={{ title: '', content: '', articleUrl: '', twitterName: '', created: '' }}
+    <Formik initialValues={{ title: '', content: '', articleUrl: '', twitterName: ''}}
             onSubmit={(values) => {
               console.log(values);
               console.log(pageContext)

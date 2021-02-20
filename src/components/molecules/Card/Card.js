@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import {removeItem as removeItemAction} from '../../../actions';
+import { removeItem as removeItemAction } from '../../../actions';
 import Paragraph from '../../atoms/Paragraph/Paragraph';
 import Heading from '../../atoms/Heading/Heading';
 import Button from '../../atoms/Button/Button';
@@ -87,14 +87,14 @@ class Card extends Component {
 
   render() {
     const { id, pageContext, title, created, twitterName, articleUrl, content, removeItem } = this.props;
-    const {redirect} =this.state
+    const { redirect } = this.state;
 
     if (redirect ) {
       return <Redirect to={`${pageContext}/${id}`} />
     }
       return (
-        <StyledWrapper onClick={this.handleCardClick} >
-          <InnerWrapper activeColor={pageContext}>
+        <StyledWrapper>
+          <InnerWrapper onClick={this.handleCardClick} activeColor={pageContext}>
             <StyledHeading>{title}</StyledHeading>
             <DateInfo>{created}</DateInfo>
             {pageContext === 'twitters' && <StyledAvatar src={twitterName} />}
@@ -102,7 +102,7 @@ class Card extends Component {
           </InnerWrapper>
           <InnerWrapper flex>
             <Paragraph>{content}</Paragraph>
-            <Button onClick={()=> removeItem(pageContext,id)} secondary>REMOVE</Button>
+            <Button onClick={() => removeItem(pageContext, id)} secondary>REMOVE</Button>
           </InnerWrapper>
         </StyledWrapper>
       );
@@ -111,12 +111,13 @@ class Card extends Component {
 
 
 Card.propTypes = {
+  id: PropTypes.string.isRequired,
   pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
   twitterName: PropTypes.string,
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
-  removeItem:PropTypes.func.isRequired,
+  removeItem: PropTypes.func.isRequired,
 };
 
 Card.defaultProps = {

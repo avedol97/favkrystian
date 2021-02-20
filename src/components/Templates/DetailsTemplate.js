@@ -62,7 +62,7 @@ const DetailsTemplate = ({ pageContext, title, content, articleUrl, twitterName 
       <StyledImage alt={twitterName} src='https://panwybierak.pl/blog/wp-content/uploads/2020/05/avatarmaker5.png' />}
 
 
-      <Button as={Link} to={`${pageContext}`} activecolor={pageContext}>
+      <Button as={Link} to={`/${pageContext}`} activecolor={pageContext}>
         save / close
       </Button>
     </StyledWrapper>

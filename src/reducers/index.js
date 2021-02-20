@@ -1,4 +1,4 @@
-import  {ADD_ITEM,REMOVE_ITEM,AUTH_REQUEST,AUTH_SUCCESS,AUTH_FAILURE,FETCH_REQUEST,FETCH_SUCCESS,FETCH_FAILURE} from '../actions'
+import { ADD_ITEM_SUCCESS, AUTH_SUCCESS, FETCH_SUCCESS, REMOVE_ITEM_SUCCESS } from '../actions';
 
 
 const initialState = {};
@@ -16,20 +16,17 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         userID: action.payload.data._id,
-      }
-    case ADD_ITEM:
-      return {
-        ...state,
-        [action.payload.itemType]: [
-          ...state
-            [action.payload.itemType],
-          action.payload.item],
       };
-    case REMOVE_ITEM:
+    case ADD_ITEM_SUCCESS:
+      return {
+        ...state,
+        [action.payload.itemType]: [...state[action.payload.itemType], action.payload.data],
+      };
+    case REMOVE_ITEM_SUCCESS:
       return {
         ...state,
         [action.payload.itemType]: [
-          ...state[action.payload.itemType].filter(item => item.id !== action.payload.id),
+          ...state[action.payload.itemType].filter(item => item._id !== action.payload.id),
         ],
       };
     default:
